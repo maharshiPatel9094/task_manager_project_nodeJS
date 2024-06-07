@@ -3,19 +3,25 @@ const getAllTasks = (req,res)=>{
 }
 
 const createTasks = (req,res)=>{
-    res.send("create task")
+    const data = req.body
+    const response = res.json(data)
+    console.log(response)
 }
 
 const getTasks = (req,res)=>{
-    res.send("get a single task")
+    const id = req.params.id
+    const response = res.json({id: id})
 }
 
 const updateTask = (req,res) =>{
-    res.send("update task")
+    const id = req.params.id
+    const data = req.body
+    const response = res.json({id: id, data: data})
 }
 
 const deleteTask = (req,res) =>{
-    res.send("delete task")
+    const id = req.params.id
+    const response = res.json({id: id})
 }
 
 
