@@ -1,34 +1,29 @@
-const getAllTasks = (req,res)=>{
-    res.send("get all tasks")
-}
+const Task = require("../models/task.js");
+const getAllTasks = (req, res) => {
+  res.send("get all tasks");
+};
 
-const createTasks = (req,res)=>{
-    const data = req.body
-    const response = res.json(data)
-    console.log(response)
-}
+const createTasks = async (req, res) => {
+  const task = await Task.create(req.body)
+  res.status(201).json({ task })
+};
 
-const getTasks = (req,res)=>{
-    const id = req.params.id
-    const response = res.json({id: id})
-}
+const getTasks = (req, res) => {
+  res.json({ id: req.params.id });
+};
 
-const updateTask = (req,res) =>{
-    const id = req.params.id
-    const data = req.body
-    const response = res.json({id: id, data: data})
-}
+const updateTask = (req, res) => {
+  res.send("update task");
+};
 
-const deleteTask = (req,res) =>{
-    const id = req.params.id
-    const response = res.json({id: id})
-}
-
+const deleteTask = (req, res) => {
+  res.send("delete task")
+};
 
 module.exports = {
-    getAllTasks,
-    createTasks,
-    getTasks,
-    updateTask,
-    deleteTask
-}
+  getAllTasks,
+  createTasks,
+  getTasks,
+  updateTask,
+  deleteTask,
+};
