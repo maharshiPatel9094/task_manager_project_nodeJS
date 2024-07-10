@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const app = express()
 const tasks = require("./routes/tasks.js")
@@ -18,7 +19,7 @@ app.use("/api/v1/tasks", tasks)
 
 
 // port
-const PORT = 3000
+const PORT = process.env.PORT
 
 const start = async() => {
     try {
