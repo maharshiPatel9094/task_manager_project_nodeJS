@@ -8,10 +8,8 @@ const connectDB = require("./db/db.config.js")
 
 
 // middleware -- makes data available in the req.body
+app.use(express.static("./public"))
 app.use(express.json())
-
-// routes
-app.get('/hello', getAllTasks)
 
 // tasks routes
 app.use("/api/v1/tasks", tasks)
