@@ -4,6 +4,7 @@ const app = express()
 const tasks = require("./routes/tasks.js")
 const connectDB = require("./db/db.config.js")
 const routeNotAvailable = require("./middleware/error.js")
+const asyncHandler = require("./middleware/async.js")
 
 // middleware for using public static files
 app.use(express.static("./public"))

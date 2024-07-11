@@ -1,14 +1,12 @@
 const Task = require("../models/task.js");
+const asyncHandler = require("../middleware/async.js");
+
 // get all tasks
-const getAllTasks = async (req, res) => {
-  try {
-    // find({}) --> get all the tasks
-    const tasks = await Task.find({});
-    res.status(200).json({ tasks });
-  } catch (error) {
-    res.status(500).json({ msg: error });
-  }
-};
+const getAllTasks = asyncHandler(async (req, res) => {
+  // find({}) --> get all the tasks
+  const tasks = await Task.find({});
+  res.status(200).json({ tasks });
+});
 // create tasks
 const createTasks = async (req, res) => {
   try {
@@ -34,7 +32,7 @@ const getTasks = async (req, res) => {
     res.status(500).json({ message: error });
   }
 };
-// update a task 
+// update a task
 const updateTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
@@ -45,7 +43,7 @@ const updateTask = async (req, res) => {
     if (!task) {
       return res.status(404).json({ msg: `no task with ID ${taskID}` });
     }
-    res.status(200).json({id: taskID , data: req.body});
+    res.status(200).json({ id: taskID, data: req.body });
   } catch (error) {
     res.status(500).json({ message: error });
   }
